@@ -1,0 +1,114 @@
+package APIMessage;
+
+option java_package = "com.newmmo.model";
+option java_outer_classname = "APIMessage";
+
+enum CharacterClassType {
+	WARRIOR = 0;
+	MAGE = 1;
+	HUNTER = 2;
+}
+
+enum ResourceType{
+	SOUNDS = 0;
+	IMAGE = 1;
+	MODEL3D = 2;
+}
+
+enum ItemType{
+		GEM = 0;
+        SWORD = 1;
+        ARMOUR = 2;
+        SHOE = 3;
+        RING = 4;
+        GLOVE = 5;
+        HELMET = 6;
+        RECOVERYHP = 7;
+        RECOVERYMANA = 8;
+}
+
+enum DamageType{
+	PHYSICS = 0;
+	MAGIC = 1;
+}
+
+enum SkillType{
+	ACTIVE = 0;
+	PASSIVE = 1;
+}
+	
+message UserInfo {
+	required string email = 1;
+	optional string pass = 2;
+	optional int32 cash = 3;
+}
+
+message UserCharacter {
+	required string name = 1;
+	optional string user_email = 2;
+	optional CharacterClassType character_class_type = 3;
+	optional int32 level = 4;
+	optional int32 exp = 5;
+	optional int32 gold = 6;
+	optional int32 skill_pt = 7;
+	optional int32 stats_pt = 8;
+	optional int32 str_pt = 9;
+	optional int32 agi_pt = 10;
+	optional int32 int_pt = 11;
+	optional int32 sta_pt = 12;
+}
+
+message MasterCharacterClass {
+	required string id = 1;
+	optional CharacterClassType character_class_type = 2;
+	optional int32 hp_base = 3;
+	optional int32 sp_base = 4;
+	optional int32 atk_base = 5;
+	optional int32 def_base = 6;
+	optional float atk_spd_base = 7;
+	optional float move_spd_base = 8;
+	optional int32 str_base = 9;
+	optional int32 int_base = 10;
+	optional int32 sta_base = 11;
+	optional int32 agi_base = 12;
+	optional int32 dodge_base = 13;
+}
+
+message Skill{
+	required string id = 1;
+	optional string name = 2;
+	optional string icon_id = 3;
+	optional int32 cast_time = 4;
+	optional int32 cool_down = 5;
+	optional int32 cost = 6;
+	optional int32 min_damage = 7;
+	optional int32 max_damage = 8;
+	optional int32 skill_factor = 9;
+	optional DamageType damage_type = 10;
+	optional string description = 11;
+	optional string skill_type = 12;
+}
+
+message MasterItem {
+	required string id = 1;
+	optional string icon_id = 2;
+	optional string model_id = 3;
+	optional ItemType item_type = 4;
+}
+
+message Resource {
+	required string id = 1;
+	optional string name = 2;
+	optional ResourceType resource_type = 3;
+}
+
+message Inventory{
+	required string id = 1;
+}
+
+message SlotInventory{
+	required string id = 1;
+	optional string inventory_id = 2;
+	optional string item_id = 3;
+	optional int32 amount = 4;
+}
